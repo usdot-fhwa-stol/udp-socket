@@ -1,1 +1,64 @@
-# udp-socket
+# UDP Socket
+The UDP Socket Library is a library that creates UDP Server and UDP Client classes which can be used to maintain UDP connections.
+
+## CI Status
+
+These badges are for the default branch only.
+
+[![Build Workflow](https://github.com/usdot-fhwa-stol/udp-socket/actions/workflows/build.yml/badge.svg)](https://github.com/usdot-fhwa-stol/udp-socket/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-fhwa-stol_udp-socket&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=usdot-fhwa-stol_udp-socket)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=usdot-fhwa-stol_udp-socket&metric=coverage)](https://sonarcloud.io/summary/new_code?id=usdot-fhwa-stol_udp-socket)
+
+## Using the Library
+
+The following sections will describe how to use the UDP Socket Library in your C++ or Python application
+
+### Install library
+
+The easiest way to include the UDP Socket Library in your application is to install it via `apt`.
+**Prerequisites**
+
+- Ubuntu ( jammy, focal,)
+- CMake 3.10
+- Python 3
+
+The UDP Soecket library is one the the FHWA (Federal Highway Administration) STOL (Saxton Transportation Operation Library) libraries built into a Debian package via CMake/CPack scripts from the [carma-builds](https://github.com/usdot-fhwa-stol/carma-builds) repository. CI (Continuous Integration) scripts also push this Debian package to a STOL Debian Package repository. To install this package you must only add this repository to `apt`.
+
+```shell
+# Get ubuntu distribution code name. All STOL APT debian packages are pushed to S3 bucket based on distribution codename.
+. /etc/lsb-release
+# add the STOL APT repository
+echo "deb [trusted=yes] http://s3.amazonaws.com/stol-apt-repository ${DISTRIB_CODENAME} main" > /etc/apt/sources.list.d/stol-apt-repository.list
+apt update
+apt install udp-socket-1
+```
+
+This steps above add the relavent STOL apt repository for pulling correct debian package.
+
+# CARMA Projects
+
+See all CARMA projects in the [USDOT FHWA STOL](https://github.com/usdot-fhwa-stol) organization on GitHub.
+
+In particular, the CARMA Simulation framework is available [here](https://github.com/usdot-fhwa-stol/carma-simulation).
+
+## Contribution
+
+Welcome to the CARMA contributing guide. Please read this guide to learn about our development process, how to propose pull requests and improvements, and how to build and test your changes to this project. [CARMA Contributing Guide](https://github.com/usdot-fhwa-stol/carma-platform/blob/develop/Contributing.md)
+
+## Code of Conduct
+
+Please read our [CARMA Code of Conduct](https://github.com/usdot-fhwa-stol/carma-platform/blob/develop/Code_of_Conduct.md) which outlines our expectations for participants within the CARMA community, as well as steps to reporting unacceptable behavior. We are committed to providing a welcoming and inspiring community for all and expect our code of conduct to be honored. Anyone who violates this code of conduct may be banned from the community.
+
+## Attribution
+
+The development team would like to acknowledge the people who have made direct contributions to the design and code in this repository. [CARMA Attribution](https://github.com/usdot-fhwa-stol/carma-platform/blob/develop/ATTRIBUTION.md)
+
+## License
+
+By contributing to the Federal Highway Administration (FHWA) Connected Automated Research Mobility Applications (CARMA), you agree that your contributions will be licensed under its Apache License 2.0 license. [CARMA License](https://github.com/usdot-fhwa-stol/carma-platform/blob/develop/docs/License.md)
+
+## Contact
+
+Please click on the CARMA logo below to visit the Federal Highway Adminstration(FHWA) CARMA website.
+
+[![CARMA Image](https://raw.githubusercontent.com/usdot-fhwa-stol/CARMAPlatform/develop/docs/image/CARMA_icon.png)](https://highways.dot.gov/research/research-programs/operations/CARMA)
