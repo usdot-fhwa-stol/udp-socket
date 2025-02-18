@@ -4,10 +4,7 @@ cmake_minimum_required(VERSION 3.10.2)
 set(CMAKE_MODULE_PATH "$ENV{CARMA_OPT_DIR}/cmake")
 list(APPEND CMAKE_PREFIX_PATH "/opt/carma/cmake/")
 
-# Required for std::lock and syntax
 set(CMAKE_CXX_STANDARD 17)
-
-
 
 project(udp-socket
     DESCRIPTION "Library include classes for UDP socket communication"
@@ -20,8 +17,6 @@ project(udp-socket
 option(BUILD_TESTS "Build tests" OFF)
 option(CREATE_DEB_PACKAGE "Create Debian Package" OFF)
 
-include(cmake/dependencies.cmake)
-
 add_library(${PROJECT_NAME} SHARED )
 
 target_include_directories(${PROJECT_NAME} 
@@ -31,9 +26,7 @@ target_include_directories(${PROJECT_NAME}
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
-target_link_libraries(${PROJECT_NAME} PUBLIC    
-  
-)
+
 set_target_properties(${PROJECT_NAME} PROPERTIES
     SOVERSION 1
 )

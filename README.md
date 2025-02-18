@@ -22,7 +22,7 @@ The easiest way to include the UDP Socket Library in your application is to inst
 - CMake 3.10
 - Python 3
 
-The UDP Soecket library is one the the FHWA (Federal Highway Administration) STOL (Saxton Transportation Operation Library) libraries built into a Debian package via CMake/CPack scripts from the [carma-builds](https://github.com/usdot-fhwa-stol/carma-builds) repository. CI (Continuous Integration) scripts also push this Debian package to a STOL Debian Package repository. To install this package you must only add this repository to `apt`.
+The UDP Socket library is one the the FHWA (Federal Highway Administration) STOL (Saxton Transportation Operation Library) libraries built into a Debian package via CMake/CPack scripts from the [carma-builds](https://github.com/usdot-fhwa-stol/carma-builds) repository. CI (Continuous Integration) scripts also push this Debian package to a STOL Debian Package repository. To install this package you must only add this repository to `apt`.
 
 ```shell
 # Get ubuntu distribution code name. All STOL APT debian packages are pushed to S3 bucket based on distribution codename.
@@ -33,13 +33,7 @@ apt update
 apt install udp-socket-1
 ```
 
-This steps above add the relavent STOL apt repository for pulling correct debian package.
-
-# CARMA Projects
-
-See all CARMA projects in the [USDOT FHWA STOL](https://github.com/usdot-fhwa-stol) organization on GitHub.
-
-In particular, the CARMA Simulation framework is available [here](https://github.com/usdot-fhwa-stol/carma-simulation).
+This steps above add the relevent STOL apt repository for pulling correct debian package.
 
 ## Contribution
 

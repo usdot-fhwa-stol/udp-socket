@@ -1,8 +1,17 @@
-/*
- * UdpServer.cpp
+/**
+ * Copyright (C) 2025 LEIDOS.
  *
- *  Created on: Aug 27, 2015
- *      Author: ivp
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 #include "UdpServer.hpp"
@@ -82,14 +91,18 @@ namespace udp_socket {
    
     int UdpServer::TimedReceive(char *msg, size_t maxSize, int maxWait_ms)
     {
-        fd_set s;
-        FD_ZERO(&s);
-        FD_SET(_socket, &s);
+        // warning: passing argument 2 to 'restrict'-qualified parameter aliases with arguments 3, 4 
+        fd_set read_fds, write_fds, except_fds;
+        FD_ZERO(&read_fds);
+        FD_ZERO(&write_fds);
+        FD_ZERO(&except_fds);
+        FD_SET(_socket, &read_fds);
+        FD_SET(_socket, &write_fds);
+        FD_SET(_socket, &except_fds);
         struct timeval timeout;
         timeout.tv_sec = maxWait_ms / 1000;
         timeout.tv_usec = (maxWait_ms % 1000) * 1000;
-
-        int retval = select(_socket + 1, &s, &s, &s, &timeout);
+        int retval = select(_socket + 1, &read_fds, &write_fds, &except_fds, &timeout);
         if (retval == -1)
         {
             // select() set errno accordingly
@@ -119,7 +132,7 @@ namespace udp_socket {
             throw UdpServerRuntimeError("Received empty message!");
         }
         else {
-            throw UdpServerRuntimeError("Listen timed out after 5 ms!");
+            throw UdpServerRuntimeError("Listen timed out after " + std::to_string(maxWait_ms) + " ms!");
         }
         return "";
     }
