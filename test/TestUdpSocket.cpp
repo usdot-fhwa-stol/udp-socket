@@ -1,0 +1,18 @@
+#include <gtest/gtest.h>
+#include <UdpClient.hpp>
+#include <UdpServer.hpp>
+
+TEST( testUdpSocket, testUdpSocketClientServer) {
+    udp_socket::UdpClient client("127.0.0.1", 5832);
+    udp_socket::UdpServer server("127.0.0.1", 5832);
+    std::string testMsg = "Testing";
+    client.Send(testMsg);
+    auto msg =  server.stringTimedReceive(100);
+    EXPECT_EQ(testMsg, msg);
+    EXPECT_EQ(client.GetAddress(), "127.0.0.1");
+    EXPECT_EQ(client.GetPort(), 5832);
+    EXPECT_EQ(server.GetAddress(), "127.0.0.1");
+    EXPECT_EQ(server.GetPort(), 5832);  
+}
+
+
