@@ -8,7 +8,6 @@ on:
      - develop
      - 'release/*'
      - 'feature/*'
-     - 'tt-138-create-udp-socket-library'
 jobs:
   build-package:
     strategy:
