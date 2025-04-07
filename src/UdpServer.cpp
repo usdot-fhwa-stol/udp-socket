@@ -21,7 +21,7 @@
 namespace udp_socket {
 
     
-    UdpServer::UdpServer(const std::string& address, int port, bool debug = false)
+    UdpServer::UdpServer(const std::string& address, int port, bool debug )
         : _port(port)
         , _address(address)
         , _debug(debug)
