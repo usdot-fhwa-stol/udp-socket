@@ -20,9 +20,10 @@
 namespace udp_socket{
 
 
-	UdpClient::UdpClient(const std::string& address, int port)
+	UdpClient::UdpClient(const std::string& address, int port, bool debug)
 		: _port(port)
 		, _address(address)
+		, _debug(debug)
 	{
 		char decimalPort[16];
 		snprintf(decimalPort, sizeof(decimalPort), "%d", _port);
@@ -80,6 +81,9 @@ namespace udp_socket{
 
 	int UdpClient::Send(const std::string& message)
 	{
+		if ( _debug) {
+			std::cout << "Sending message: " << message << " to " << GetAddress() << ":" << std::to_string(GetPort()) <<std::endl;
+		}
 		return sendto(_socket, message.c_str(), message.length(), 0, _addrInfo->ai_addr, _addrInfo->ai_addrlen);
 	}
 

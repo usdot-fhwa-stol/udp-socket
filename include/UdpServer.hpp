@@ -69,8 +69,9 @@ namespace udp_socket{
              *
              * \param[in] address  The address we receive on.
              * \param[in] port  The port we receive from.
+             * \param[in] debug  If true, the server will print debug information.
              */
-            UdpServer(const std::string& address, int port);
+            UdpServer(const std::string& address, int port, bool debug = false);
             /** \brief Clean up the UDP server.
              *
              * This function frees the address info structures and close the socket.
@@ -148,6 +149,7 @@ namespace udp_socket{
             int _port;
             std::string _address;
             struct addrinfo *_addrInfo;
+            bool _debug = false;
     };
 
 } 

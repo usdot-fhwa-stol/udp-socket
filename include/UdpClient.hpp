@@ -24,6 +24,7 @@
 #include <unistd.h>
 #include <cstdio>
 #include <errno.h>
+#include <iostream>
 
 namespace udp_socket{
 
@@ -64,8 +65,9 @@ namespace udp_socket{
              *
              * \param[in] address  The address to send to.
              * \param[in] port  The port to send to.
+             * \param[in] debug  If true, the client will print debug information.
             */
-            UdpClient(const std::string& address, int port);
+            UdpClient(const std::string& address, int port, bool debug = false);
             /** \brief Clean up the UDP client.
              *
              * This function frees the address info structures and close the socket.
@@ -120,6 +122,7 @@ namespace udp_socket{
             int _port;
             std::string _address;
             struct addrinfo *_addrInfo;
+            bool _debug = false;
 	};
 
 } 

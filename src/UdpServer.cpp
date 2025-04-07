@@ -21,9 +21,10 @@
 namespace udp_socket {
 
     
-    UdpServer::UdpServer(const std::string& address, int port)
+    UdpServer::UdpServer(const std::string& address, int port, bool debug = false)
         : _port(port)
         , _address(address)
+        , _debug(debug)
     {
         char decimalPort[16];
         snprintf(decimalPort, sizeof(decimalPort), "%d", _port);
@@ -125,7 +126,9 @@ namespace udp_socket {
         if (num_of_bytes > 0 ) {
             msg.resize(num_of_bytes);
             std::string ret(msg.data());
-            std::cout << "UDP Server message received : " << ret << " of size " << num_of_bytes << std::endl;
+            if (_debug) {
+                std::cout << "UDP Server message received : " << ret << " of size " << num_of_bytes << std::endl;
+            }
             return ret;
         }
         else if ( num_of_bytes == 0 ) {
